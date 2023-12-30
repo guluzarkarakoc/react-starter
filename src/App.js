@@ -3,12 +3,12 @@ import './App.css';
 import { useEffect, useState } from 'react';
 //import PostCard from './components/PostCard/PostCard';
 import PostService from './services/postService';
-import { BrowserRouter,Route,Routes } from 'react-router-dom';
+import { Route,Routes } from 'react-router-dom';
 import HomePage from './pages/HomePages/HomePage';
 import Posts from './pages/Posts/Posts';
 import NotFound from './pages/NotFound/NotFound';
 import Navbar from './components/Navbar/Navbar';
-
+import Login from './pages/Login/Login'
 
 function App() {
 const [posts, setPosts] = useState([])
@@ -33,21 +33,21 @@ setPosts(response.data)
 }
 }
 const removePost = (id) => {
-  setPosts(posts.filter(i=>i.id !== id))
+  setPosts(posts.filter(i=>i.id !== id));
 }
 
   return (
     <>
-    <BrowserRouter>
+   
     <Navbar/>
     <Routes>
-      <Route  path="/" element={<HomePage></HomePage>}/>
-      <Route path="/homepages" />
-      <Route path="posts" element={<Posts></Posts>}/>
+      <Route  path="/"/>
+      <Route path="/homepages" element={<HomePage></HomePage>}/>
+      <Route path="/posts" element={<Posts></Posts>}/>
       <Route path="*" element={<NotFound></NotFound>}/>
-      
+      <Route path="/login" elemnet={<Login/>}></Route>
     </Routes>
-    </BrowserRouter>
+   
     <p>1</p>
     </>
   //   <div className="App">
