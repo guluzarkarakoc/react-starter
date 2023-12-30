@@ -41,14 +41,13 @@ const removePost = (id) => {
    
     <Navbar/>
     <Routes>
-      <Route  path="/"/>
-      <Route path="/homepages" element={<HomePage></HomePage>}/>
+      
+      <Route path="/" element={<HomePage></HomePage>}/>
       <Route path="/posts" element={<Posts></Posts>}/>
       <Route path="*" element={<NotFound></NotFound>}/>
       <Route path="/login" elemnet={<Login/>}></Route>
     </Routes>
    
-    <p>1</p>
     </>
   //   <div className="App">
   //  {posts.map((post)=><PostCard onDelete={removePost} post={post}></PostCard>)}

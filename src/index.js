@@ -8,7 +8,7 @@ import { AuthProvider } from './contexts/authContext';
 import {BrowserRouter} from 'react-router-dom'
 import {Provider} from 'react-redux'
 import { configureStore } from './store/configureStore';
-
+import $ from 'jquery';
 
 const store=configureStore()
 const root = ReactDOM.createRoot(document.getElementById('root'));
