@@ -1,10 +1,14 @@
 import { createContext ,useContext, useState} from "react";
+interface AuthState {
+    isAuthenticated:boolean;
+    setIsAuthenticated:any;
+}
 
-export const AuthContext= createContext();
+export const AuthContext= createContext<AuthState>({isAuthenticated:true,setIsAuthenticated:null});
 
 export const useAuth = () => useContext(AuthContext)
 
-export const AuthProvider=(props) => {
+export const AuthProvider=(props:any) => {
 
 const [isAuthenticated,setIsAuthenticated] =useState(false)
 

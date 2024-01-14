@@ -1,56 +1,51 @@
-
-import './App.css';
-import { useEffect, useState } from 'react';
-//import PostCard from './components/PostCard/PostCard';
-import PostService from './services/postService';
-import { Route,Routes } from 'react-router-dom';
-import Posts from './pages/Posts/Posts';
-import NotFound from './pages/NotFound/NotFound';
-import Navbar from './components/Navbar/Navbar';
-import Login from './pages/Login/Login'
-
+import {useEffect, useState} from "react";
+import "./App.css";
+import PostService from "./services/postService";
+import { Routes, Route} from "react-router-dom";
+import Posts from "./pages/Posts/Posts";
+import NotFound from "./pages/NotFound/NotFound";
+import Navbar from "./components/Navbar/Navbar";
+import Login from "./pages/Login/Login";
 function App() {
-const [posts, setPosts] = useState<any>([])
-useEffect(()=>{
-  fetchItems();
-},[])
-const fetchItems =async()=>{
-// axios.get("https://jsonplaceholder.typicode.com/posts")
-// .then((response)=>{console.log(response)})
-// .catch((error)=>{console.log(error)})
-// .finally(()=>{console.log("işlem bitti.")});
+	// Backend bağlantısı - http isteği
+	// bağlantı sonucu gelen değeri ekranda göstermek
+	// componentler arası veri iletişimi
+	const [posts, setPosts] = useState<any>([]);
 
-//setTimeout(()=>{console.log("merhaba")},5000)
-try{
-//let response=await axios.get("https://jsonplaceholder.typicode.com/posts")
+	useEffect(() => {
+		fetchItems();
+	}, []);
 
-let response=await PostService.getAll()
+	// es6
+	const fetchItems = async () => {
+		// axios.get("https://jsonplaceholder.typicode.com/posts")
+		//   .then((response) => { console.log(response) })
+		//   .catch((error) => { console.log(error) })
+		//   .finally(() => { console.log("async işlem bitti") });
 
-setPosts(response.data)
-}catch(e){
-  console.log(e);
-}
-}
-const removePost = (id:any) => {
-  setPosts(posts.filter((i:any)=>i.id !== id));
-}
+		try {
+			let response = await PostService.getAll();
+			setPosts(response.data);
+		} catch (e) {
+			console.log(e);
+		}
+	};
 
-return (
-  <>
-    <Navbar />
-    <Routes>
-      <Route path="/" element={<Homepage />} />
-      <Route path="/posts" element={<Posts />} />
-      <Route path="*" element={<NotFound />} />
-      <Route path="/login" element={<Login />} />
-    </Routes>
-  </>
-);
-  //   <div className="App">
-  //  {posts.map((post)=><PostCard onDelete={removePost} post={post}></PostCard>)}
-  
-  //   </div>
-  
+	const removePost = (id: any) => {
+		setPosts(posts.filter((i: any) => i.id !== id));
+	};
+
+	return (
+		<>
+			<Navbar />
+			<Routes>
+				<Route path="/" element={<Homepage />} />
+				<Route path="/posts" element={<Posts />} />
+				<Route path="*" element={<NotFound />} />
+				<Route path="/login" element={<Login />} />
+			</Routes>
+		</>
+	);
 }
 
 export default App;
