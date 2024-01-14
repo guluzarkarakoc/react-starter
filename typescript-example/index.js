@@ -1,22 +1,22 @@
-var j;
+let j;
 j = 10.5;
 console.log(j);
-var myFunction = function () {
+const myFunction = () => {
     return 10;
 };
 function myFunction2() {
 }
-var function1 = myFunction();
-var function2 = myFunction2();
-// class=>function
-var ProductService = /** @class */ (function () {
-    function ProductService() {
-    }
+let function1 = myFunction();
+let function2 = myFunction2();
+class ProductService {
     //any 
-    ProductService.prototype.getall = function () {
+    getall() {
         return true;
-    };
-    ProductService.prototype.getById = function (id) {
-    };
-    return ProductService;
-}());
+    }
+    getById(id) {
+        return { id: 1, name: "phone", price: 10 };
+    }
+}
+let productService = new ProductService();
+let product = productService.getById(1);
+console.log(product.price);
