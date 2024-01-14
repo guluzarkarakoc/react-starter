@@ -4,14 +4,13 @@ import { useEffect, useState } from 'react';
 //import PostCard from './components/PostCard/PostCard';
 import PostService from './services/postService';
 import { Route,Routes } from 'react-router-dom';
-import HomePage from './pages/HomePages/HomePage';
 import Posts from './pages/Posts/Posts';
 import NotFound from './pages/NotFound/NotFound';
 import Navbar from './components/Navbar/Navbar';
 import Login from './pages/Login/Login'
 
 function App() {
-const [posts, setPosts] = useState([])
+const [posts, setPosts] = useState<any>([])
 useEffect(()=>{
   fetchItems();
 },[])
@@ -32,28 +31,26 @@ setPosts(response.data)
   console.log(e);
 }
 }
-const removePost = (id) => {
-  setPosts(posts.filter(i=>i.id !== id));
+const removePost = (id:any) => {
+  setPosts(posts.filter((i:any)=>i.id !== id));
 }
 
-  return (
-    <>
-   
-    <Navbar/>
+return (
+  <>
+    <Navbar />
     <Routes>
-      
-      <Route path="/" element={<HomePage></HomePage>}/>
-      <Route path="/posts" element={<Posts></Posts>}/>
-      <Route path="*" element={<NotFound></NotFound>}/>
-      <Route path="/login" elemnet={<Login/>}></Route>
+      <Route path="/" element={<Homepage />} />
+      <Route path="/posts" element={<Posts />} />
+      <Route path="*" element={<NotFound />} />
+      <Route path="/login" element={<Login />} />
     </Routes>
-   
-    </>
+  </>
+);
   //   <div className="App">
   //  {posts.map((post)=><PostCard onDelete={removePost} post={post}></PostCard>)}
   
   //   </div>
-  );
+  
 }
 
 export default App;

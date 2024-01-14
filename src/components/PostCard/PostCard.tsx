@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Image,Button } from 'semantic-ui-react'
 
-function PostCard(props) {
+function PostCard(props:any) {
   return (
     <div><Card>
     <Image src='/images/avatar/large/matthew.png' wrapped ui={false} />
